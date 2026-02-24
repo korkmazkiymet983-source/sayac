@@ -1,0 +1,347 @@
+/* ========== BASE HUNT SECTION ========== */
+.basehunt-section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 24px 80px;
+    overflow: hidden;
+}
+
+.basehunt-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: start;
+}
+
+/* ==========================================
+   SLIDER WRAPPER
+   ========================================== */
+.basehunt-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ==========================================
+   MAIN IMAGE AREA
+   ========================================== */
+.bh-main {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #08040f;
+    border: 1px solid rgba(233, 78, 255, 0.2);
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(233, 78, 255, 0.05);
+}
+
+/* Individual slide images: stacked, crossfade */
+.bh-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    z-index: 1;
+}
+
+.bh-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* ==========================================
+   ARROWS — ALWAYS VISIBLE, LEFT & RIGHT EDGE
+   ========================================== */
+.bh-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(10, 6, 18, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    opacity: 1;
+    padding: 0;
+}
+
+.bh-arrow:hover {
+    background: rgba(233, 78, 255, 0.3);
+    border-color: rgba(233, 78, 255, 0.6);
+    box-shadow: 0 0 22px rgba(233, 78, 255, 0.25);
+    transform: translateY(-50%) scale(1.12);
+}
+
+.bh-arrow:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.bh-arrow-left {
+    left: 14px;
+}
+
+.bh-arrow-right {
+    right: 14px;
+}
+
+/* ==========================================
+   COUNTER
+   ========================================== */
+.bh-counter {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    padding: 5px 14px;
+    border-radius: 100px;
+    background: rgba(10, 6, 18, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+/* ==========================================
+   PROGRESS BAR (3 seconds)
+   ========================================== */
+.bh-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    z-index: 10;
+}
+
+.bh-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #e94eff, #7b5cff);
+    border-radius: 0 2px 2px 0;
+}
+
+.bh-progress-fill.running {
+    width: 100%;
+    transition: width 3s linear;
+}
+
+/* ==========================================
+   THUMBNAILS
+   ========================================== */
+.bh-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px;
+    scrollbar-width: none;
+}
+
+.bh-thumbs::-webkit-scrollbar {
+    display: none;
+}
+
+.bh-thumb {
+    flex-shrink: 0;
+    width: 72px;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    background: rgba(18, 10, 32, 0.6);
+    transition: all 0.25s ease;
+}
+
+.bh-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+    display: block;
+}
+
+.bh-thumb:hover img {
+    opacity: 0.75;
+}
+
+.bh-thumb.active {
+    border-color: #e94eff;
+    box-shadow: 0 0 12px rgba(233, 78, 255, 0.3);
+}
+
+.bh-thumb.active img {
+    opacity: 1;
+}
+
+/* ==========================================
+   INFO / CONTENT PANEL
+   ========================================== */
+.basehunt-info {
+    padding-top: 8px;
+}
+
+.basehunt-info h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.basehunt-info p {
+    color: #9b8aad;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 28px;
+}
+
+.bh-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.bh-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: #f0e6f6;
+    transition: transform 0.2s ease;
+}
+
+.bh-features li:hover {
+    transform: translateX(4px);
+}
+
+.bh-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(233, 78, 255, 0.12);
+    border: 1px solid rgba(233, 78, 255, 0.2);
+    color: #e94eff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.bh-features li:hover .bh-check {
+    background: rgba(233, 78, 255, 0.3);
+    border-color: rgba(233, 78, 255, 0.5);
+    box-shadow: 0 0 12px rgba(233, 78, 255, 0.2);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+    .basehunt-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bh-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .bh-arrow-left {
+        left: 8px;
+    }
+
+    .bh-arrow-right {
+        right: 8px;
+    }
+
+    .bh-thumb {
+        width: 56px;
+        height: 36px;
+    }
+
+    .basehunt-section {
+        padding: 60px 16px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bh-thumbs {
+        gap: 6px;
+    }
+
+    .bh-thumb {
+        width: 48px;
+        height: 30px;
+        border-radius: 4px;
+    }
+
+    .bh-counter {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .bh-arrow {
+        width: 36px;
+        height: 36px;
+    }
+}
+/* ========== FOOTER CENTERING ========== */
+.footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 32px !important;
+}
+
+.footer-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+.footer-brand .nav-logo {
+    justify-content: center !important;
+}
+
+.footer-brand p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+}
