@@ -97,10 +97,12 @@ function initNavbar() {
     window.addEventListener('scroll', () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
                 }
                 ticking = false;
             });
@@ -282,14 +284,23 @@ function initSlider() {
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
     // Disable CSS scroll-behavior:smooth to prevent involuntary scroll snapping
-    document.documentElement.style.scrollBehavior = 'auto';
+    try {
+        document.documentElement.style.scrollBehavior = 'auto';
+    } catch (e) { console.error(e); }
+
+    const run = (fn) => {
+        try { if (typeof fn === 'function') fn(); }
+        catch (e) { console.error('Init error:', e); }
+    };
+
     const canvas = document.getElementById('particles-canvas');
-    if (canvas) new ParticleSystem(canvas);
-    initNavbar();
-    initSmoothScroll();
-    initFAQ();
-    initReveal();
-    initCounters();
-    initTerminal();
-    initSlider();
+    if (canvas) run(() => new ParticleSystem(canvas));
+
+    run(initNavbar);
+    run(initSmoothScroll);
+    run(initFAQ);
+    run(initReveal);
+    run(initCounters);
+    run(initTerminal);
+    run(initSlider);
 });
