@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://zincaddon.xyz/sitemap.xml
+Sitemap: https://zincaddon.xyz/sitemap_images.xml

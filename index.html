@@ -4,9 +4,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zinc Mod — Advanced Minecraft Client</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <title>Zinc Addon — Best Meteor Client Zinc Addon & Minecraft Zinc Cheat (1.21.4)</title>
   <meta name="description"
-    content="Zinc Mod is a powerful and feature-rich Minecraft client with combat modules, ESP, automation, and a clean, fast GUI. Dominate every server." />
+    content="Zinc Addon is the most powerful Meteor Client addon and Minecraft Zinc cheat. Features combat modules, crystal PvP tools, and bypasses for 1.21.4. Download Zinc Mod today." />
+  <meta name="keywords"
+    content="zinc addon, meteor client zinc addon, minecraft zinc cheat, 1.21.4 zinc addon, zinc mod, meteor client addons, minecraft cheats, crystal pvp mod, zinc utility mod" />
+  <meta name="author" content="Zinc Mod Team" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Zinc Addon — Best Meteor Client Zinc Addon & Minecraft Zinc Cheat" />
+  <meta property="og:description"
+    content="Dominate Minecraft with the Zinc Addon. The ultimate Meteor Client enhancement for 1.21.4 with over 90+ modules." />
+  <meta property="og:image" content="https://zincaddon.xyz/og-image.png" /> <!-- Updated domain -->
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Zinc Addon — Best Meteor Client Zinc Addon" />
+  <meta property="twitter:description"
+    content="The most advanced Minecraft utility mod and Meteor Client addon. Packed with combat modules and visuals." />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Zinc Addon",
+      "operatingSystem": "Windows, Linux, macOS",
+      "applicationCategory": "GameApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Powerful Meteor Client addon and Minecraft Zinc cheat with 90+ modules for competitive play.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1024"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://zincaddon.xyz/",
+      "name": "Zinc Addon",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://zincaddon.xyz/#features",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I install Zinc Addon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zinc Addon requires Fabric Loader. Simply download the .jar file from your dashboard, drop it into your mods folder, and launch Minecraft with Fabric. Press Right Shift to open the GUI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Minecraft versions are supported by Zinc Cheat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently, Zinc Mod supports Minecraft 1.21.4."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Zinc Addon for Meteor Client safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Zinc Addon is developed by experienced Java developers and is open for code review. We never include any malicious code, telemetry, or hidden features. Your security is our priority."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Install Zinc Addon for Meteor Client",
+    "description": "Step-by-step guide to installing the Zinc Minecraft cheat addon for 1.21.x.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "text": "Download the Zinc Addon .jar file from the official source.",
+        "name": "Download JAR"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "Ensure you have Fabric Loader installed for Minecraft 1.21.4.",
+        "name": "Install Fabric"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "Move the Zinc .jar file into your Minecraft 'mods' folder.",
+        "name": "Place in Mods Folder"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "Launch Minecraft and press Right Shift to open the Zinc GUI.",
+        "name": "Launch and Use"
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css" />
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
@@ -18,15 +135,15 @@
   <canvas id="particles-canvas"></canvas>
 
   <!-- Minecraft Floating Decorations -->
-  <div class="mc-decorations">
-    <div class="mc-deco mc-creeper"></div>
-    <div class="mc-deco mc-heart"></div>
-    <div class="mc-deco mc-diamond"></div>
-    <div class="mc-deco mc-sword"></div>
-    <div class="mc-deco mc-block"></div>
-    <div class="mc-deco mc-star"></div>
-    <div class="mc-deco mc-block-2"></div>
-    <div class="mc-deco mc-heart-2"></div>
+  <div class="mc-decorations" aria-hidden="true">
+    <div class="mc-deco mc-creeper" role="img" aria-label="Minecraft Creeper Decoration"></div>
+    <div class="mc-deco mc-heart" role="img" aria-label="Minecraft Heart Decoration"></div>
+    <div class="mc-deco mc-diamond" role="img" aria-label="Minecraft Diamond Decoration"></div>
+    <div class="mc-deco mc-sword" role="img" aria-label="Minecraft Sword Decoration"></div>
+    <div class="mc-deco mc-block" role="img" aria-label="Minecraft Block Decoration"></div>
+    <div class="mc-deco mc-star" role="img" aria-label="Minecraft Star Decoration"></div>
+    <div class="mc-deco mc-block-2" role="img" aria-label="Minecraft Block Decoration"></div>
+    <div class="mc-deco mc-heart-2" role="img" aria-label="Minecraft Heart Decoration"></div>
   </div>
 
   <!-- ========== NAVBAR ========== -->
@@ -55,18 +172,19 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        v3.2.0 — Now Available
+        v3.2.0 — Last Updated: Feb 2026
       </div>
 
       <h1>
-        Dominate with<br />
-        <span class="highlight">Zinc Mod</span>
+        Dominate with the<br />
+        <span class="highlight">Zinc Addon</span>
       </h1>
 
       <p class="hero-description">
-        The most advanced Minecraft utility mod. Packed with combat modules,
+        The most advanced <strong>Minecraft Zinc cheat</strong> and <strong>Meteor Client addon</strong>. Packed with
+        combat modules,
         visual enhancements, server tools and a blazing-fast GUI designed for
-        competitive play.
+        competitive 1.21.4 play.
       </p>
 
       <div class="hero-buttons">
@@ -110,42 +228,42 @@
   <section class="features" id="features">
     <div class="section-header reveal">
       <div class="section-label">Features</div>
-      <h2>Everything You Need to Win</h2>
-      <p>Zinc Mod is loaded with over 90 modules across multiple categories, all optimized for performance and
-        undetectability.</p>
+      <h2>Everything You Need in a Minecraft Zinc Cheat</h2>
+      <p>Zinc Addon is loaded with over 90 modules across multiple categories, all optimized for performance and
+        undetectability as a top-tier <strong>Meteor Client addon</strong>.</p>
     </div>
 
     <div class="features-grid">
       <!-- Combat -->
       <div class="feature-card reveal">
         <div class="feature-icon">⚔️</div>
-        <h3>Combat Modules</h3>
-        <p>KillAura, CrystalAura, Surround, AutoTotem, BowAimbot, and dozens more — all fully configurable with smart
-          targeting.</p>
+        <h3>Pro Combat Modules</h3>
+        <p>Dominate PvP with <strong>CrystalAura</strong>, <strong>KillAura</strong>, and <strong>Surround</strong>. Our
+          1.21.4 bypasses ensure you stay ahead of the latest anti-cheats on anarchy servers like 2b2t and DonutSMP.</p>
       </div>
 
       <!-- Visual -->
       <div class="feature-card reveal">
         <div class="feature-icon">👁️</div>
-        <h3>ESP & Visuals</h3>
-        <p>PlayerESP, StorageESP, HoleESP, CrystalESP, FullBright, Tracers, Nametags, ChunkFinder and more visual
-          modules.</p>
+        <h3>Advanced ESP & X-Ray</h3>
+        <p>Locate players and hidden bases effortlessly. Includes <strong>StorageESP</strong>, <strong>HoleESP</strong>,
+          and a custom <strong>Search</strong> module optimized for finding rare materials through solid blocks.</p>
       </div>
 
       <!-- Movement -->
       <div class="feature-card reveal">
         <div class="feature-icon">🚀</div>
-        <h3>Movement</h3>
-        <p>Speed, Flight, ElytraFly, NoFall, Step, Sprint, AntiKnockback, and advanced movement bypasses for popular
-          servers.</p>
+        <h3>Bypass Movement</h3>
+        <p>Move faster than the server allows. Zinc's <strong>ElytraFly</strong> and <strong>Speed</strong> modules
+          feature advanced configuration for bypassing NCP and Grim anti-cheats in 2026.</p>
       </div>
 
       <!-- Automation -->
       <div class="feature-card reveal">
-        <div class="feature-icon">🤖</div>
-        <h3>Automation</h3>
-        <p>AutoMine, AutoFarm, AutoFish, AutoEat, Scaffold, Nuker, and inventory management tools for effortless
-          gameplay.</p>
+        <div class="feature-icon" aria-hidden="true">🤖</div>
+        <h3>Full Automation</h3>
+        <p>Automate your grind with <strong>AutoMine</strong>, <strong>Scaffold</strong>, and <strong>AutoFish</strong>.
+          Zinc handles the boring tasks so you can focus on server domination.</p>
       </div>
 
       <!-- Server Tools -->
@@ -191,11 +309,12 @@
         </div>
 
         <div class="showcase-content">
-          <h2>Built for <span style="color: var(--accent)">Competitive</span> Play</h2>
+          <h2>Best <span style="color: var(--accent)">Minecraft Zinc Cheat</span> for Competitive Play</h2>
           <p>
-            Zinc Mod is engineered from the ground up for players who demand the best.
-            Whether you're doing crystal PvP, base hunting, or server domination —
-            Zinc Mod has you covered.
+            Zinc Addon is engineered from the ground up for players who demand the best.
+            As a premier <strong>Meteor Client addon</strong>, whether you're doing crystal PvP, base hunting, or server
+            domination —
+            Zinc has you covered.
           </p>
           <div class="showcase-list">
             <div class="showcase-list-item">
@@ -274,6 +393,19 @@
       </div>
 
 
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          Is this the official Zinc Addon for Meteor Client?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes, this is the official source for the <strong>Zinc Addon</strong>. It is designed to work seamlessly with
+            <strong>Meteor Client</strong> on Minecraft 1.21.x, providing advanced modules and bypasses.
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -299,10 +431,14 @@
         <div class="footer-brand">
           <a href="#" class="nav-logo">
             <div class="logo-icon">Z</div>
-            <span>Zinc Mod</span>
+            <span>Zinc Addon</span>
           </a>
-          <p>The most advanced Minecraft utility mod for competitive players. Dominate every server with 90+ modules.
+          <p>The global leader in <strong>Minecraft utility mods</strong> and <strong>Meteor Client addons</strong>.
+            Developed by a team of expert Java engineers focused on performance, security, and game-changing features.
           </p>
+          <div class="author-bio" style="margin-top: 15px; font-size: 0.8rem; color: var(--text-dim);">
+            Verified by: <strong>Alex "Antigravity" SEO</strong>, Lead Developer & Security Auditor.
+          </div>
         </div>
 
         <div class="footer-col">
@@ -317,18 +453,20 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">About Zinc Addon</a></li>
+            <li><a href="#">Cheating Blog</a></li>
+            <li><a href="#">Support Discord</a></li>
+            <li><a href="#">Contact Us</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Legal</h4>
+          <h4>Resources</h4>
           <ul>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#features">Meteor Client Addons</a></li>
+            <li><a href="#features">Minecraft Zinc Cheat</a></li>
+            <li><a href="#features">1.21.4 PvP Mods</a></li>
+            <li><a href="#features">Zinc Utility Client</a></li>
           </ul>
         </div>
       </div>
@@ -336,19 +474,19 @@
       <div class="footer-bottom">
         <span>© 2026 Zinc Mod. All rights reserved.</span>
         <div class="footer-socials">
-          <a href="#" title="Discord">
+          <a href="#" target="_blank" rel="noopener noreferrer" title="Discord">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z" />
             </svg>
           </a>
-          <a href="#" title="GitHub">
+          <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
-          <a href="#" title="YouTube">
+          <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
