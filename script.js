@@ -203,10 +203,20 @@ function initTerminal() {
 
 // ========== BASE HUNT SLIDER ==========
 function initSlider() {
+    console.log('Zinc: Initializing slider...');
     const main = document.querySelector('.bh-main');
-    if (!main) return;
+    if (!main) {
+        console.warn('Zinc: .bh-main not found');
+        return;
+    }
 
     const slides = main.querySelectorAll('.bh-slide');
+    const total = slides.length;
+    if (total === 0) {
+        console.warn('Zinc: No .bh-slide elements found');
+        return;
+    }
+
     const prevBtn = document.getElementById('bh-prev');
     const nextBtn = document.getElementById('bh-next');
     const counter = document.getElementById('bh-counter');
@@ -215,23 +225,29 @@ function initSlider() {
     const thumbs = thumbsWrap ? thumbsWrap.querySelectorAll('.bh-thumb') : [];
 
     let cur = 0;
-    const total = slides.length;
     let timer = null;
 
     function goTo(i) {
+        if (total <= 1) return;
         if (i === cur) return;
-        slides[cur].classList.remove('active');
+
+        // Old slide
+        if (slides[cur]) slides[cur].classList.remove('active');
         if (thumbs[cur]) thumbs[cur].classList.remove('active');
 
+        // New index
         cur = ((i % total) + total) % total;
 
-        slides[cur].classList.add('active');
+        // New slide
+        if (slides[cur]) slides[cur].classList.add('active');
         if (thumbs[cur]) thumbs[cur].classList.add('active');
+
         if (counter) counter.textContent = (cur + 1) + ' / ' + total;
-        // Scroll thumbnail strip horizontally WITHOUT moving the page
+
+        // Horizontal scroll for thumbnails
         if (thumbs[cur] && thumbsWrap) {
-            var thumbLeft = thumbs[cur].offsetLeft - thumbsWrap.offsetLeft;
-            var center = thumbLeft - (thumbsWrap.clientWidth / 2) + (thumbs[cur].offsetWidth / 2);
+            const thumbLeft = thumbs[cur].offsetLeft - thumbsWrap.offsetLeft;
+            const center = thumbLeft - (thumbsWrap.clientWidth / 2) + (thumbs[cur].offsetWidth / 2);
             thumbsWrap.scrollTo({ left: center, behavior: 'smooth' });
         }
 
@@ -241,66 +257,69 @@ function initSlider() {
     function next() { goTo(cur + 1); }
     function prev() { goTo(cur - 1); }
 
-    // Progress bar: 3 saniye
     function restartProgress() {
         if (!progress) return;
         progress.classList.remove('running');
-        progress.style.width = '0%';
-        void progress.offsetWidth; // reflow
+        void progress.offsetWidth; // force reflow
         progress.classList.add('running');
     }
 
-    // Auto-play (3 sn)
     function startAuto() {
+        if (total <= 1) return;
         clearInterval(timer);
         timer = setInterval(next, 3000);
         restartProgress();
     }
 
-    // Arrows
-    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); startAuto(); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { next(); startAuto(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
 
-    // Thumbnail
-    thumbs.forEach(function (t) {
-        t.addEventListener('click', function () {
-            goTo(parseInt(t.dataset.i));
-            startAuto();
+    thumbs.forEach((t) => {
+        t.addEventListener('click', () => {
+            const idx = parseInt(t.getAttribute('data-i'));
+            if (!isNaN(idx)) {
+                goTo(idx);
+                startAuto();
+            }
         });
     });
 
-    // Swipe
-    var sx = 0;
-    main.addEventListener('touchstart', function (e) { sx = e.changedTouches[0].screenX; }, { passive: true });
-    main.addEventListener('touchend', function (e) {
-        var d = sx - e.changedTouches[0].screenX;
-        if (Math.abs(d) > 50) { d > 0 ? next() : prev(); startAuto(); }
+    // Touch Swipe
+    let sx = 0;
+    main.addEventListener('touchstart', (e) => { sx = e.changedTouches[0].screenX; }, { passive: true });
+    main.addEventListener('touchend', (e) => {
+        const dx = sx - e.changedTouches[0].screenX;
+        if (Math.abs(dx) > 50) {
+            dx > 0 ? next() : prev();
+            startAuto();
+        }
     }, { passive: true });
 
-    // Start
     startAuto();
+    console.log('Zinc: Slider ready with ' + total + ' slides.');
 }
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
-    // Disable CSS scroll-behavior:smooth to prevent involuntary scroll snapping
-    try {
-        document.documentElement.style.scrollBehavior = 'auto';
-    } catch (e) { console.error(e); }
+    // 1. Disable involuntary smooth scroll
+    try { document.documentElement.style.scrollBehavior = 'auto'; } catch (e) { }
 
-    const run = (fn) => {
+    const run = (name, fn) => {
         try { if (typeof fn === 'function') fn(); }
-        catch (e) { console.error('Init error:', e); }
+        catch (e) { console.error('Zinc ' + name + ' failed:', e); }
     };
 
-    const canvas = document.getElementById('particles-canvas');
-    if (canvas) run(() => new ParticleSystem(canvas));
+    // 2. High priority init
+    run('Slider', initSlider);
 
-    run(initNavbar);
-    run(initSmoothScroll);
-    run(initFAQ);
-    run(initReveal);
-    run(initCounters);
-    run(initTerminal);
-    run(initSlider);
+    // 3. Decoration and other components
+    const canvas = document.getElementById('particles-canvas');
+    if (canvas) run('Particles', () => new ParticleSystem(canvas));
+
+    run('Navbar', initNavbar);
+    run('SmoothScroll', initSmoothScroll);
+    run('FAQ', initFAQ);
+    run('Reveal', initReveal);
+    run('Counters', initCounters);
+    run('Terminal', initTerminal);
 });
