@@ -925,41 +925,74 @@ body::before {
 .footer {
     position: relative;
     z-index: 2;
-    padding: 40px 28px;
+    padding: 60px 28px 32px;
     border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, transparent 0%, rgba(249, 115, 22, 0.015) 100%);
 }
 
-.footer-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 20px !important;
+.footer-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
 }
 
 .footer-brand {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    max-width: 440px !important;
-    margin: 0 auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 320px;
 }
 
 .footer-brand .nav-logo {
     margin-bottom: 14px;
-    justify-content: center !important;
 }
 
 .footer-brand p {
     color: var(--text-3);
     font-size: 0.82rem;
     line-height: 1.7;
-    max-width: 360px !important;
-    margin: 0 auto !important;
 }
 
 .footer-brand p strong {
     color: var(--text-2);
+}
+
+.footer-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    padding-top: 6px;
+}
+
+.footer-links a {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-3);
+    transition: all 0.25s var(--ease);
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--ember-1);
+    transition: width 0.3s var(--ease);
+}
+
+.footer-links a:hover {
+    color: var(--text);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
 }
 
 .footer-col {
@@ -970,10 +1003,7 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 14px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    padding-top: 24px;
     font-size: 0.72rem;
     color: var(--text-3);
     width: 100%;
@@ -982,7 +1012,8 @@ body::before {
 .footer-socials {
     display: flex;
     gap: 10px;
-    justify-content: center;
+    align-items: center;
+    padding-top: 6px;
 }
 
 .footer-socials a {
@@ -1003,6 +1034,24 @@ body::before {
     color: var(--ember-1);
     background: rgba(249, 115, 22, 0.05);
     transform: translateY(-2px);
+}
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 28px;
+    }
+
+    .footer-brand {
+        align-items: center;
+    }
+
+    .footer-links {
+        gap: 20px;
+    }
 }
 
 /* ========== ANIMATIONS ========== */
